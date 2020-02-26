@@ -1,2 +1,2 @@
 all: Chess.cpp
-	gcc -g -Wall -o Chess Chess.cpp
+	g++ -Wall -Werror Chess Chess.cpp
