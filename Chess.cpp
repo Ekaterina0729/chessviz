@@ -1,6 +1,4 @@
 #include <cstdio>
-#include <iostream>
-using namespace std;
 int main()
 {
      char chess[9][9]={{'8', 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'},
