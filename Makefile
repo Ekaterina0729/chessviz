@@ -3,7 +3,7 @@ CFLAGS = -Wall -Werror -MP -MMD
 
 .PHONY: clean run all
 
-all: 		./bin/broad.exe
+all: 		./bin/broad.exe	./bin/test.out
 
 -include build/*.d
 
@@ -19,6 +19,11 @@ all: 		./bin/broad.exe
 ./build/broad.o: ./src/broad.cpp ./src/chess.h
 		$(g) $(CFLAGS) -o ./build/broad.o -c ./src/broad.cpp
 
+./bin/test.out: build/test.o build/board.o
+	g++ $(CFLAGS) -L thirdparty/lib -l gtest_main -l gtest -l pthread build/test.o build/board.o -o bin/test.out
+
+./build/test.o: test/test.cpp
+	g++ $(CFLAGS) -isystem thirdparty/googletest/include -l pthread -I thirdparty/googletest/include -I src -c test/test.cpp -o build/test.o
 
 clean:
 		rm -rf build/*.o build/*.d
