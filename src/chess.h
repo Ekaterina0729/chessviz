@@ -2,10 +2,21 @@
 #define BOARD_H
 
 #include <iostream>
-using namespace std;
+#include <stdio.h>
+#include <stdlib.h>
+#include <string>
 
-void print(char chess[][9]);
-void proverka(string xod, int m[2][2]);
-void Move(char chess[][9], int m[2][2]);
+char** make();
+void print(char** board);
+bool pawn_move(char** board, int i, int j, int k, int l);
+bool bishop_move(char** board, int i, int j, int k, int l);
+bool horse_move(char** board, int i, int j, int k, int l);
+bool rook_move(char** board, int i, int j, int k, int l);
+bool queen_move(char** board, int i, int j, int k, int l);
+bool king_moved(char** board, int i, int j, int k, int l);
+bool symbols(int i, int j, int k, int l);
+bool chess_move(char** board, string str);
+int min(int a, int b);
+int max(int a, int b);
 
 #endif
