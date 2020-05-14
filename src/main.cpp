@@ -1,29 +1,20 @@
 #include "chess.h"
 #include <iostream>
-using namespace std;
+#include <stdio.h>
+#include <stdlib.h>
+#include <string>
 
-int main()
+int main(int argc, char* argv[])
 {
-    char chess[9][9] = {{'8', 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'},
-                        {'7', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
-                        {'6', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-                        {'5', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-                        {'4', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-                        {'3', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-                        {'2', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'},
-                        {'1', 'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'},
-                        {' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'}};
-
-    print(chess);
-    int m[2][2];
-    string xod;
-    while (1) {
-        proverka(xod, m);
-        if ((chess[m[0][1]][m[0][0]] == 'P')
-            || (chess[m[0][1]][m[0][0]] == 'p'))
-            Move(chess, m);
-        cout << endl << endl;
-        print(chess);
+    char** board = make();
+    print(board);
+    for (int i = 0; i < 10; ++i) {
+        cout << "Make your move!" << endl;
+        string str;
+        getline(cin, str);
+        if (chess_move(board, str)) {
+            print(board);
+        } else {
+            cout << "Incorrect input! Repeat please! " << endl;
+        }
     }
-    return 0;
-}
